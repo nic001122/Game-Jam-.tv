@@ -6,6 +6,7 @@ public class Player: MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    public ParticleSystem deathEffect;
 
     public HealthBar healthBar;
 
@@ -20,7 +21,14 @@ public class Player: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             TakeDamage(20);
-        }    
+        }
+
+        if (currentHealth <= 0)
+        {
+
+            deathEffect.Play();
+            Destroy(gameObject);
+        }
     }
 
     void TakeDamage (int damage) 
