@@ -31,10 +31,21 @@ public class Player: MonoBehaviour
         }
     }
 
-    void TakeDamage (int damage) 
+    public void TakeDamage (int damage) 
     {
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+    }
+
+    public void TakeSpikeDamage(int spikeDamage)
+    {
+        currentHealth -=spikeDamage;
+
+        healthBar.SetHealth(currentHealth);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+       TakeSpikeDamage(20); 
     }
 }
