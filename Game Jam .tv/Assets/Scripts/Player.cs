@@ -14,6 +14,8 @@ public class Player: MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        spriteRenderer01 = GetComponent<SpriteRenderer>();
+        spriteRenderer02 = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -29,6 +31,8 @@ public class Player: MonoBehaviour
             deathEffect.Play();
             Destroy(gameObject);
         }
+            
+            
     }
 
     public void TakeDamage (int damage) 
@@ -46,6 +50,16 @@ public class Player: MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-       TakeSpikeDamage(20); 
+       if (other.tag == "Spike") 
+       {
+            TakeSpikeDamage(20); 
+       }
+       
     }
+
+    [SerializeField] Color32 deathText = new Color32 (176, 52, 52, 255);
+    [SerializeField] Color32 deathBlackScreen = new Color32 (0, 0, 0, 255);
+
+    SpriteRenderer spriteRenderer01;
+    SpriteRenderer spriteRenderer02; 
 }
