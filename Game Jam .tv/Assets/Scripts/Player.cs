@@ -25,6 +25,16 @@ public class Player: MonoBehaviour
             TakeDamage(20);
         }
 
+        if (Input.GetKeyDown(KeyCode.I)) 
+        {
+            TakeDamage(100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            TakeDamage(100);
+        }
+
         if (currentHealth <= 0)
         {
 
