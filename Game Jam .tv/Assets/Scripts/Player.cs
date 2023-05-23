@@ -57,6 +57,7 @@ public class Player: MonoBehaviour
        
     }
 
+
     [SerializeField] Color32 deathText = new Color32 (176, 52, 52, 255);
     [SerializeField] Color32 deathBlackScreen = new Color32 (0, 0, 0, 255);
 
