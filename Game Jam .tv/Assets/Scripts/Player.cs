@@ -61,5 +61,5 @@ public class Player: MonoBehaviour
     [SerializeField] Color32 deathBlackScreen = new Color32 (0, 0, 0, 255);
 
     SpriteRenderer spriteRenderer01;
-    SpriteRenderer spriteRenderer02; 
+    SpriteRenderer spriteRenderer02;
 }
