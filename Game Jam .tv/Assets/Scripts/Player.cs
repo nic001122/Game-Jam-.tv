@@ -29,7 +29,7 @@ public class Player: MonoBehaviour
         {
 
             deathEffect.Play();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
             
             
