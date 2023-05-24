@@ -6,7 +6,7 @@ public class Player: MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    public ParticleSystem deathEffect;
+    
 
     public HealthBar healthBar;
 
@@ -38,8 +38,7 @@ public class Player: MonoBehaviour
         if (currentHealth <= 0)
         {
 
-            deathEffect.Play();
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
             
             
