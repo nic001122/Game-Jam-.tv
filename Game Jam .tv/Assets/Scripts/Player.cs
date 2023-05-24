@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Player: MonoBehaviour
 {
+    public float deathDelay = 2f;
     public int maxHealth = 100;
     public int currentHealth;
     
-
+    public GameManager1 gameManager1;
     public HealthBar healthBar;
 
     void Start()
@@ -30,18 +31,11 @@ public class Player: MonoBehaviour
             TakeDamage(100);
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            TakeDamage(100);
-        }
-
         if (currentHealth <= 0)
         {
-
-            Destroy(gameObject);
+            //FindObjectOfType<GameManager1>().gameOver();
+            Destroy(gameObject, deathDelay);
         }
-            
-            
     }
 
     public void TakeDamage (int damage) 
@@ -65,7 +59,6 @@ public class Player: MonoBehaviour
        }
        
     }
-
 
     [SerializeField] Color32 deathText = new Color32 (176, 52, 52, 255);
     [SerializeField] Color32 deathBlackScreen = new Color32 (0, 0, 0, 255);
