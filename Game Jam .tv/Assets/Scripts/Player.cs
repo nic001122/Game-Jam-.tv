@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player: MonoBehaviour
 {
-    public float deathDelay = 2f;
+    [SerializeField] public float deathDelay = 2f;
     public int maxHealth = 100;
     public int currentHealth;
     
     public GameManager1 gameManager1;
+    public GameOverScreen gameOver;
     public HealthBar healthBar;
 
     void Start()
@@ -33,6 +34,7 @@ public class Player: MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            gameOver.Setup();
             //FindObjectOfType<GameManager1>().gameOver();
             Destroy(gameObject, deathDelay);
         }
@@ -55,7 +57,7 @@ public class Player: MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
        if (other.tag == "Spike") 
        {
-            TakeSpikeDamage(20); 
+            TakeSpikeDamage(100); 
        }
        
     }
