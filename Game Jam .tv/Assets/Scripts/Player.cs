@@ -12,7 +12,7 @@ public class Player: MonoBehaviour
 
     public GameManager1 gameManager1;
     public EscapeMenu escape;
-    public GameOverScreen gameOver;
+    public GameOverScreen gameOverScreen;
     public HealthBar healthBar;
 
     void Start()
@@ -35,13 +35,13 @@ public class Player: MonoBehaviour
             TakeDamage(100);
         }
         
-        if (Input.GetKeyDown(KeyCode.Escape) && !escapeIsOn)
+        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn == false)
         {
-            escape.Setup();
+            escape.activeSetup();
             escapeIsOn = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn)
+        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn == true)
         {
             escape.backToGame();
             escapeIsOn = false;
@@ -49,7 +49,7 @@ public class Player: MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            gameOver.Setup();
+            gameOverScreen.Setup();
             //FindObjectOfType<GameManager1>().gameOver();
             Destroy(gameObject, deathDelay);
         }
