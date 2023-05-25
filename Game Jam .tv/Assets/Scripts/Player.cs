@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player: MonoBehaviour
 {
     [SerializeField] public float deathDelay = 2f;
-    public int maxHealth = 100;
+    public int maxHealth = 50;
     public int currentHealth;
 
     public bool escapeIsOn = false;
@@ -38,12 +38,14 @@ public class Player: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn == false)
         {
             escape.activeSetup();
+            Time.timeScale = 0;
             escapeIsOn = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn == true)
         {
             escape.backToGame();
+            Time.timeScale = 1;
             escapeIsOn = false;
         }
 
