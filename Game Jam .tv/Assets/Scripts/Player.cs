@@ -7,8 +7,11 @@ public class Player: MonoBehaviour
     [SerializeField] public float deathDelay = 2f;
     public int maxHealth = 100;
     public int currentHealth;
+
+    public bool escapeIsOn = false;
     
     public GameManager1 gameManager1;
+    public EscapeMenu escape;
     public GameOverScreen gameOver;
     public HealthBar healthBar;
 
@@ -30,6 +33,18 @@ public class Player: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I)) 
         {
             TakeDamage(100);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn)
+        {
+            escape.Setup();
+            escapeIsOn = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !escapeIsOn)
+        {
+            escape.backToGame();
+            escapeIsOn = false;
         }
 
         if (currentHealth <= 0)

@@ -4,20 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameOverScreen : MonoBehaviour
+public class EscapeMenu : MonoBehaviour
 {
+
     public void Setup() 
     {
         gameObject.SetActive(true);
     }
 
-    public void restartButton()
+    public void backToGame()
     {
-        SceneManager.LoadScene(0);
-    }
-
-    public void mainMenuButton()
-    {
-        SceneManager.LoadScene(1);
+        gameObject.SetActive(false);
     }
 }
