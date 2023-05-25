@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class EscapeMenu : MonoBehaviour
 {
-
     public void Setup() 
     {
         gameObject.SetActive(true);

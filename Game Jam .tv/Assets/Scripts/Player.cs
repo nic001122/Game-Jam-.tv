@@ -9,7 +9,7 @@ public class Player: MonoBehaviour
     public int currentHealth;
 
     public bool escapeIsOn = false;
-    
+
     public GameManager1 gameManager1;
     public EscapeMenu escape;
     public GameOverScreen gameOver;
@@ -35,13 +35,13 @@ public class Player: MonoBehaviour
             TakeDamage(100);
         }
         
-        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn)
+        if (Input.GetKeyDown(KeyCode.Escape) && !escapeIsOn)
         {
             escape.Setup();
             escapeIsOn = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !escapeIsOn)
+        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn)
         {
             escape.backToGame();
             escapeIsOn = false;
