@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager1 : MonoBehaviour
 {
+    //bools
+
     bool gameHasEnded = false;
+    
+    // Game Over
 
     public void gameOver()
     {   

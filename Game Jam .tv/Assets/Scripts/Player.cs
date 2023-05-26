@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class Player: MonoBehaviour
 {
+    // Serialize Field Variables
+
     [SerializeField] public float deathDelay = 2f;
     [SerializeField] public int maxHealth = 100;
     [SerializeField] public int currentHealth;
 
+    // bools
+
     public bool escapeIsOn = false;
 
+    // classes
+
     public GameManager1 gameManager1;
-    public EscapeMenu escape;
     public GameOverScreen gameOverScreen;
     public HealthBar healthBar;
     public GameObject pauseMenu;
+
+    // Start & Update
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        spriteRenderer01 = GetComponent<SpriteRenderer>();
-        spriteRenderer02 = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -56,6 +61,8 @@ public class Player: MonoBehaviour
         }
     }
 
+    // Everything that has to do with damage
+
     public void TakeDamage (int damage) 
     {
         currentHealth -= damage;
@@ -68,6 +75,14 @@ public class Player: MonoBehaviour
         currentHealth -=spikeDamage;
 
         healthBar.SetHealth(currentHealth);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+       if (other.tag == "Spike") 
+       {
+            TakeSpikeDamage(100); 
+       }
+       
     }
 
     // Pause Menu
@@ -85,18 +100,4 @@ public class Player: MonoBehaviour
         escapeIsOn = false;
         Time.timeScale = 1f;
     }   
-
-    private void OnTriggerEnter2D(Collider2D other) {
-       if (other.tag == "Spike") 
-       {
-            TakeSpikeDamage(100); 
-       }
-       
-    }
-
-    [SerializeField] Color32 deathText = new Color32 (176, 52, 52, 255);
-    [SerializeField] Color32 deathBlackScreen = new Color32 (0, 0, 0, 255);
-
-    SpriteRenderer spriteRenderer01;
-    SpriteRenderer spriteRenderer02;
 }
