@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player: MonoBehaviour
 {
     [SerializeField] public float deathDelay = 2f;
-    public int maxHealth = 50;
-    public int currentHealth;
+    [SerializeField] public int maxHealth = 100;
+    [SerializeField] public int currentHealth;
 
     public bool escapeIsOn = false;
 
@@ -14,6 +14,7 @@ public class Player: MonoBehaviour
     public EscapeMenu escape;
     public GameOverScreen gameOverScreen;
     public HealthBar healthBar;
+    public GameObject pauseMenu;
 
     void Start()
     {
@@ -27,26 +28,24 @@ public class Player: MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TakeDamage(20);
+            TakeDamage(2);
         }
 
         if (Input.GetKeyDown(KeyCode.I)) 
         {
-            TakeDamage(100);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn == false)
-        {
-            escape.activeSetup();
-            Time.timeScale = 0;
-            escapeIsOn = true;
+            TakeDamage(10);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && escapeIsOn == true)
+        if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            escape.backToGame();
-            Time.timeScale = 1;
-            escapeIsOn = false;
+            if (escapeIsOn)
+            {
+                BackToGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
 
         if (currentHealth <= 0)
@@ -70,6 +69,22 @@ public class Player: MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
     }
+
+    // Pause Menu
+
+    public void PauseGame()
+    {
+        pauseMenu.SetActive(true);
+        escapeIsOn = true;
+        Time.timeScale = 0f;
+    }
+
+    public void BackToGame()
+    {
+        pauseMenu.SetActive(false);
+        escapeIsOn = false;
+        Time.timeScale = 1f;
+    }   
 
     private void OnTriggerEnter2D(Collider2D other) {
        if (other.tag == "Spike") 
