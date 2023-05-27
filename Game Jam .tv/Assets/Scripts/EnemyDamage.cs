@@ -22,6 +22,7 @@ public class EnemyDamage : MonoBehaviour
             if (Time.time > lastAttackedAt + cooldown)
             {
                 GiveDamage();
+                FindPlayer = false;
                 lastAttackedAt = Time.time;
             }
         }
@@ -37,7 +38,7 @@ public class EnemyDamage : MonoBehaviour
         {
             if (GameObject.FindGameObjectWithTag("Player"))
             {
-                GetComponent<Player>().TakeDamage(4);
+                GetComponent<Player>().TakeDamage(2);
             }
         }
     }
