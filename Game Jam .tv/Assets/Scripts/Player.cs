@@ -5,8 +5,7 @@ using UnityEngine;
 public class Player: MonoBehaviour
 {
     // Serialize Field Variables
-
-    [SerializeField] public float deathDelay = 2f;
+    
     [SerializeField] public int maxHealth = 100;
     [SerializeField] public int currentHealth;
 
@@ -31,7 +30,7 @@ public class Player: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             TakeDamage(2);
         }
@@ -57,7 +56,7 @@ public class Player: MonoBehaviour
         {
             gameOverScreen.Setup();
             //FindObjectOfType<GameManager1>().gameOver();
-            Destroy(gameObject, deathDelay);
+            Destroy(gameObject);
         }
     }
 

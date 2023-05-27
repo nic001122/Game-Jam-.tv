@@ -24,13 +24,16 @@ public class EnemyDamage : MonoBehaviour
                 GiveDamage();
                 FindPlayer = false;
                 lastAttackedAt = Time.time;
+                FindPlayer = false;
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindPlayer = true;
-       
+        if (collision.tag == "Enemy")
+        {
+            FindPlayer = true;
+        }
     }
     public void GiveDamage()
     {
