@@ -18,6 +18,7 @@ public class Player: MonoBehaviour
     public GameManager1 gameManager1;
     public GameOverScreen gameOverScreen;
     public HealthBar healthBar;
+    public PauseMenuScreen pauseMenuScreen;
     public GameObject pauseMenu;
 
     // Start & Update
@@ -42,13 +43,17 @@ public class Player: MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            if (escapeIsOn)
-            {
-                BackToGame();
+            if (!escapeIsOn)
+            {   
+                pauseMenuScreen.pauseGame();
+                Time.timeScale = 0f;
+                escapeIsOn = true;
             }
+            
             else
             {
-                PauseGame();
+                pauseMenuScreen.returnToGame();
+                escapeIsOn = false;
             }
         }
 
@@ -80,23 +85,6 @@ public class Player: MonoBehaviour
        if (other.tag == "Spike") 
        {
             TakeSpikeDamage(100); 
-       }
-       
+       }    
     }
-
-    // Pause Menu
-
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        escapeIsOn = true;
-        Time.timeScale = 0f;
-    }
-
-    public void BackToGame()
-    {
-        pauseMenu.SetActive(false);
-        escapeIsOn = false;
-        Time.timeScale = 1f;
-    }   
 }
