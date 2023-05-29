@@ -84,7 +84,7 @@ public class Player: MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
        if (other.tag == "Spike") 
        {
-            TakeSpikeDamage(maxHealth); 
+            TakeSpikeDamage(maxHealth);
        }    
     }
 }

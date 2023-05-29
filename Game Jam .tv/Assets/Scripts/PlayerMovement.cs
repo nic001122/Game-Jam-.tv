@@ -11,23 +11,32 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    public Animator animator;
+
     // Update is called once per frame
     void Update()
     {
-        //get Input from the character
-       horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (animator.GetBool("IsHitting") == false)
+        {
+            // Animations
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-        }
-        if (Input.GetButtonDown("Crouch"))
-        {
-            crouch = true;
-        }
-        else if (Input.GetButtonUp("Crouch"))
-        {
-            crouch = false;
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
+            //get Input from the character
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
+            if (Input.GetButtonDown("Crouch"))
+            {
+                crouch = true;
+            }
+            else if (Input.GetButtonUp("Crouch"))
+            {
+                crouch = false;
+            }
         }
     }
 
