@@ -34,8 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
+                animator.SetFloat("Vertical Speed", 1f);
                 jump = true;
             }
+
             if (Input.GetButtonDown("Crouch"))
             {
                 crouch = true;
@@ -45,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
                 crouch = false;
             }
         }
+    }
+
+    public void OnLanding()
+    {
+        animator.SetFloat("Vertical Speed", 0f);
     }
 
     private void FixedUpdate()
