@@ -16,8 +16,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animator.GetBool("IsHitting") == true)
+        {
+            horizontalMove = 0f;
+        }
+
         if (animator.GetBool("IsHitting") == false)
         {
+
+
             // Animations
 
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));

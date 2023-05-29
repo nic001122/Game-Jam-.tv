@@ -21,8 +21,10 @@ public class PlayerAttack : MonoBehaviour
     public void Update()
     {
         Attack();
+        
         if (timeBtwAttack <= 0)
         {
+
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 Debug.Log(animator.GetBool("IsHitting"));
