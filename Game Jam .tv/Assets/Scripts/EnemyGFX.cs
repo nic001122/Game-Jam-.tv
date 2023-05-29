@@ -15,13 +15,10 @@ public class EnemyGFX : MonoBehaviour
         if (aiPath.desiredVelocity.x >= 0.01f)
         {
             animator.SetBool("IsMoving", true);
-            Debug.Log("Started Moving");
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if(aiPath.desiredVelocity.x <= -0.01f)
         {
-            animator.SetBool("IsMoving", false);
-            Debug.Log("Stopped Moving");
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
