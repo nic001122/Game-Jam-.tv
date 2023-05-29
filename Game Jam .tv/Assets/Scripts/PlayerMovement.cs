@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                animator.SetFloat("Vertical Speed", 1f);
+                animator.SetBool("Is Jumping", true);
                 jump = true;
             }
 
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanding()
     {
-        animator.SetFloat("Vertical Speed", 0f);
+        animator.SetBool("Is Jumping", false);
     }
 
     private void FixedUpdate()
