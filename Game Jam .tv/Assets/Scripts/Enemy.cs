@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public int health = 10;
+    public ParticleSystem bloodEffect;
 
     
     // Start is called before the first frame update
@@ -26,5 +27,7 @@ public class Enemy : MonoBehaviour
     {
         
         health -= damage;
+        bloodEffect.Play();
+
     }
 }

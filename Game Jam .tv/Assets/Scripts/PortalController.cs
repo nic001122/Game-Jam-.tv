@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class PortalController : MonoBehaviour
 {
     public bool playerWentThrough;
+    public int Scenes;
 
     public void GoThroughPortal()
     {
         if (!playerWentThrough)
         {
             playerWentThrough = true;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(Scenes);
         }
     }
 }
