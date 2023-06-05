@@ -19,6 +19,7 @@ public class EnemyGFX : MonoBehaviour
         }
         else if(aiPath.desiredVelocity.x <= -0.01f)
         {
+            animator.SetBool("IsMoving", true);
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }

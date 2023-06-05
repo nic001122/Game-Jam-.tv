@@ -31,16 +31,6 @@ public class Player: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            TakeDamage(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.I)) 
-        {
-            TakeDamage(10);
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             if (!escapeIsOn)
