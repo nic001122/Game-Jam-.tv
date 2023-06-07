@@ -9,6 +9,9 @@ public class Player: MonoBehaviour
     [SerializeField] public int maxHealth = 100;
     [SerializeField] public int currentHealth;
 
+    [SerializeField] public int currentDepressionHealth;
+    [SerializeField] public int maxDepressionHealth = 3;
+
     // bools
 
     public bool escapeIsOn = false;
@@ -18,6 +21,7 @@ public class Player: MonoBehaviour
     public GameManager1 gameManager1;
     public GameOverScreen gameOverScreen;
     public HealthBar healthBar;
+    public DepressionBar depressionBar;
     public PauseMenuScreen pauseMenuScreen;
     public GameObject pauseMenu;
 
@@ -27,10 +31,15 @@ public class Player: MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        currentDepressionHealth = maxDepressionHealth;
+        depressionBar.SetMaxHealthDepression(maxDepressionHealth);
     }
 
     void Update()
     {
+        // Player Input
+
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             if (!escapeIsOn)
@@ -46,6 +55,8 @@ public class Player: MonoBehaviour
                 escapeIsOn = false;
             }
         }
+
+        // Death
 
         if (currentHealth <= 0)
         {
@@ -76,5 +87,12 @@ public class Player: MonoBehaviour
        {
             TakeSpikeDamage(maxHealth);
        }    
+    }
+
+    private void depressionBarTakeDamage()
+    {
+        currentDepressionHealth -= 1;
+
+        depressionBar.SetHealthDepression(currentDepressionHealth);
     }
 }
